@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from './Navigation';
+import Navigation from '../Navigation/Navigation.jsx';
 
 const Layout = ({ children, currentPage, onPageChange }) => {
   return (

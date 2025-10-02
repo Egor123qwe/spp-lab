@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # Фронтенд приложение
   frontend:
     build:
       context: .
@@ -21,7 +20,6 @@ services:
       retries: 3
       start_period: 40s
 
-  # Nginx для проксирования (опционально)
   nginx:
     image: nginx:alpine
     container_name: taskmanager-nginx
@@ -42,6 +40,5 @@ networks:
     driver: bridge
 
 volumes:
-  # Можно добавить volumes для данных, если понадобится
   app-data:
     driver: local

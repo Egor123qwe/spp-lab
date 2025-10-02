@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { Layout } from './components'
-import { HomePage, ProjectsPage, ProfilePage } from './pages'
+import Layout from './components/Layout/Layout.jsx'
+import HomePage from './pages/HomePage/HomePage.jsx'
+import ProjectsPage from './pages/ProjectsPage/ProjectsPage.jsx'
+import ProfilePage from './pages/ProfilePage/ProfilePage.jsx'
 import './App.css'
 
 function App() {

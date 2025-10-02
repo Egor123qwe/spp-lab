@@ -15,14 +15,7 @@ const Navigation = ({ currentPage, onPageChange }) => {
           <button
             key={item.id}
             onClick={() => onPageChange(item.id)}
-            style={{
-              margin: '0 10px',
-              padding: '5px 10px',
-              backgroundColor: currentPage === item.id ? '#007bff' : '#f8f9fa',
-              color: currentPage === item.id ? 'white' : 'black',
-              border: '1px solid #ccc',
-              cursor: 'pointer'
-            }}
+            className={currentPage === item.id ? 'active' : ''}
           >
             {item.label}
           </button>
