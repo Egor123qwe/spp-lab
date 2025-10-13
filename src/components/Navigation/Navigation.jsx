@@ -1,29 +1,24 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
 
-const Navigation = () => {
-  const location = useLocation();
-  
+const Navigation = ({ currentPage, onPageChange }) => {
   const menuItems = [
-    { path: '/', label: 'Главная' },
-    { path: '/projects', label: 'Проекты' },
-    { path: '/profile', label: 'Профиль' }
+    { id: 'home', label: 'Главная' },
+    { id: 'projects', label: 'Проекты' },
+    { id: 'profile', label: 'Профиль' }
   ];
 
   return (
     <nav>
-      <Link to="/" className="nav-logo">
-        <h2>SPP lab</h2>
-      </Link>
+      <h2>Spp lab</h2>
       <div>
         {menuItems.map(item => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
+          <button
+            key={item.id}
+            onClick={() => onPageChange(item.id)}
+            className={currentPage === item.id ? 'active' : ''}
           >
             {item.label}
-          </Link>
+          </button>
         ))}
       </div>
     </nav>

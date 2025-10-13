@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import { useApp } from '../../context/AppContext';
 
 const ProfilePage = () => {
-  const { currentUser, updateUser } = useApp();
+  const [user, setUser] = useState({
+    name: 'Иван Иванов',
+    email: 'ivan.ivanov@example.com',
+    role: 'Менеджер проектов'
+  });
   const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({ ...currentUser });
+  const [editData, setEditData] = useState({ ...user });
 
   const handleEdit = () => {
     setIsEditing(true);
-    setEditData({ ...currentUser });
+    setEditData({ ...user });
   };
 
   const handleSave = () => {
-    updateUser(editData);
+    setUser(editData);
     setIsEditing(false);
   };
 
   const handleCancel = () => {
-    setEditData({ ...currentUser });
+    setEditData({ ...user });
     setIsEditing(false);
   };
 
@@ -97,9 +100,9 @@ const ProfilePage = () => {
         ) : (
           <div className="profile-info">          
             <div className="profile-info__details">
-              <h2>{currentUser.name}</h2>
-              <h3><span>Email:</span> {currentUser.email}</h3>
-              <h3><span>Роль:</span> {currentUser.role}</h3>
+              <h2>{user.name}</h2>
+              <h3><span>Email:</span> {user.email}</h3>
+              <h3><span>Роль:</span> {user.role}</h3>
             </div>
           </div>
         )}
