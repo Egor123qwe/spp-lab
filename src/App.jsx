@@ -1,30 +1,29 @@
-import { useState } from 'react'
-import Layout from './components/Layout/Layout.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AppProvider } from './context/AppContext.jsx'
+import Navigation from './components/Navigation/Navigation.jsx'
 import HomePage from './pages/HomePage/HomePage.jsx'
 import ProjectsPage from './pages/ProjectsPage/ProjectsPage.jsx'
+import ProjectDetailPage from './pages/ProjectDetailPage/ProjectDetailPage.jsx'
 import ProfilePage from './pages/ProfilePage/ProfilePage.jsx'
 import './App.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage />
-      case 'projects':
-        return <ProjectsPage />
-      case 'profile':
-        return <ProfilePage />
-      default:
-        return <HomePage />
-    }
-  }
-
   return (
-    <Layout currentPage={currentPage} onPageChange={setCurrentPage}>
-      {renderPage()}
-    </Layout>
+    <AppProvider>
+      <Router>
+        <div>
+          <Navigation />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/projects/:id" element={<ProjectDetailPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </AppProvider>
   )
 }
 
